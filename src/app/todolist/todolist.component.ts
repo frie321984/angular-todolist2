@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodolistService } from './todolist.service';
-import { Observable } from "rxjs/Observable";
-import { TimerObservable } from "rxjs/observable/TimerObservable";
+import { TimerObservable } from 'rxjs/observable/TimerObservable';
 
 
 @Component({
