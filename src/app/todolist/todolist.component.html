@@ -5,7 +5,7 @@
 </div>
 
 <ul id="todos">
-  <li *ngFor="let item of todoService.getTodos(); let i = index;">
+  <li [ngClass]="{'selected':i==selectedIndex}" *ngFor="let item of todoService.getTodos(); let i = index;">
     <span (click)="selectTodo(i)">{{item}}</span>
     <button (click)="removeTodo(i)">X</button>
   </li>
