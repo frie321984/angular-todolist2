@@ -10,6 +10,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { JokeComponent } from './joke/joke.component';
 import { TodolistService } from './todolist/todolist.service';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     AboutComponent,
     TodolistComponent,
     NavigationBarComponent,
-    JokeComponent
+    JokeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
