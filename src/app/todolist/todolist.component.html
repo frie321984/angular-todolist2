@@ -7,11 +7,12 @@
   <button (click)="clearInput()">Clear</button>
 </div>
 
-<ul id="todos">
-  <li [ngClass]="{'selected':i==selectedIndex}" *ngFor="let item of todoService.getTodos(); let i = index;">
-    <span (click)="selectTodo(i)">{{item}}</span>
-    <button (click)="removeTodo(i)">X</button>
-  </li>
-</ul>
+<table class="container table table-striped" id="todos">
+  <tr class="row" (click)="selectTodo(i)" [ngClass]="{'selected':i==selectedIndex, 'even':i%2==0, 'odd':i%2==1}" *ngFor="let item of todoService.getTodos(); let i = index;">
+    <td ></td>
+    <td>{{item}}</td>
+    <td><button (click)="removeTodo(i)">Delete</button></td>
+  </tr>
+</table>
 
 <app-joke *ngIf="isShowJoke"></app-joke>

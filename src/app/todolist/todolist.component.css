@@ -1,4 +1,14 @@
-li.selected {
+table  {
+    border-collapse: collapse;
+    width: 50%;
+}
+.odd {
+    background-color: lightgray;
+}
+.even {
+    background-color: lightblue;
+}
+.selected {
     font-weight: bold;
-    background-color: lightskyblue;
+    background-color: lightsalmon;
 }
