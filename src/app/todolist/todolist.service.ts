@@ -3,11 +3,11 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class TodolistService {
 
-  todos: string[] = [];
+  todos: Todo[] = [];
 
   constructor() {
-    this.todos.push('foo');
-    this.todos.push('bar');
+    this.add('foo');
+    this.add('bar');
   }
 
   remove(index: number) {
@@ -21,7 +21,7 @@ export class TodolistService {
       return;
     }
     console.log('add new todo ' + text);
-    this.todos.push(text);
+    this.todos.push(new Todo(text));
   }
 
   edit(index: number, text: string) {
@@ -30,14 +30,53 @@ export class TodolistService {
       return;
     }
     console.log('edit todo #' + index);
-    this.todos[index] = text;
+    this.todos[index].text = text;
   }
 
-  getTodos(): string[] {
+  getTodos(): Todo[] {
+    this.sortByPrio();
     return this.todos;
   }
 
-  getTodo(index: number): string {
+  private sortByPrio() {
+    this.todos.sort((todoA, todoB) => {
+      const a = todoA.prio;
+      const b = todoB.prio;
+      if (a === b) {
+        return 0;
+      }
+      if (a < b) {
+        return -1;
+      }
+      if (a > b) {
+        return 1;
+      }
+    });
+  }
+
+  getTodo(index: number): Todo {
     return this.todos[index];
+  }
+
+  rankUp(index: number) {
+    this.todos[index].prio++;
+  }
+
+  rankDown(index: number) {
+    this.todos[index].prio--;
+    if (this.todos[index].prio < 1) {
+      this.todos[index].prio = 1;
+    }
+  }
+}
+
+export class Todo {
+  text: string;
+  prio: number;
+  constructor(text: string, prio?: number) {
+    if (!prio) {
+      this.prio = 3;
+    }
+    this.text = text;
   }
 }

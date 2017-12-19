@@ -42,7 +42,7 @@ export class TodolistComponent implements OnInit {
     console.log('select #' + index);
     this.selectedIndex = index;
     this.isEditMode = true;
-    this.inputText = this.todoService.getTodo(index);
+    this.inputText = this.todoService.getTodo(index).text;
   }
 
   removeTodo(index: number) {

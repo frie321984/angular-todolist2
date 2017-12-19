@@ -8,10 +8,19 @@
 </div>
 
 <table class="container table table-striped" id="todos">
+  <tr>
+    <th>Prio (v)</th>
+    <th>Todo</th>
+    <th></th>
+  </tr>
   <tr class="row" (click)="selectTodo(i)" [ngClass]="{'selected':i==selectedIndex, 'even':i%2==0, 'odd':i%2==1}" *ngFor="let item of todoService.getTodos(); let i = index;">
-    <td ></td>
-    <td>{{item}}</td>
-    <td><button (click)="removeTodo(i)">Delete</button></td>
+    <td>{{item.prio}}</td>
+    <td>{{item.text}}</td>
+    <td>
+      <button (click)="removeTodo(i)">Delete</button>
+      <button (click)="todoService.rankUp(i)">v</button>
+      <button (click)="todoService.rankDown(i)">^</button>
+    </td>
   </tr>
 </table>
 
