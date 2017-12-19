@@ -1,6 +1,12 @@
-<ul>
-  <li *ngFor="let item of todos; let i = index;">
-    <span (click)="selectTodo(i)">Lorem ipsum dolor.</span>
+<div id="editform">
+  <input type="text" [(ngModel)]="inputText" />
+  <button (click)="addTodo()">Add</button>
+  <button (click)="clearInput()">Clear</button>
+</div>
+
+<ul id="todos">
+  <li *ngFor="let item of todoService.getTodos(); let i = index;">
+    <span (click)="selectTodo(i)">{{item}}</span>
     <button (click)="removeTodo(i)">X</button>
   </li>
 </ul>

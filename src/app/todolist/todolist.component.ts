@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs/Observable";
+import { TodolistService } from './todolist.service';
 
 
 @Component({
@@ -8,36 +8,38 @@ import { Observable } from "rxjs/Observable";
   styleUrls: ['./todolist.component.css']
 })
 export class TodolistComponent implements OnInit {
-  inputText: string;
+  inputText = '';
   selectedIndex: number;
-
-  todos: string[] = [];
   isShowJoke = false;
 
-  constructor() { }
+  constructor(private todoService: TodolistService) { }
 
   ngOnInit() {
-    this.todos.push('foo');
-    this.todos.push('bar');
+    this.isShowJoke = false;
+  }
+
+  clearInput() {
+    console.log('clear');
+    this.selectedIndex = null;
+    this.inputText = '';
     this.isShowJoke = false;
   }
 
   selectTodo(index: number) {
     console.log('select #' + index);
     this.selectedIndex = index;
-    this.inputText = this.todos[index];
+    this.inputText = this.todoService.getTodo(index);
   }
 
   removeTodo(index: number) {
-    console.log('removing #' + index);
-    this.todos.splice(index, 1);
+    this.todoService.removeTodo(index);
     this.isShowJoke = true;
   }
 
-  addTodo(text: string) {
-    console.log('add new todo ' + text);
-    this.todos.push(text);
+  addTodo() {
+    this.todoService.addTodo(this.inputText);
     this.isShowJoke = false;
+    this.inputText = '';
   }
 
 }

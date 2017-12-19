@@ -8,6 +8,8 @@ import { AboutComponent } from './about/about.component';
 import { TodolistComponent } from './todolist/todolist.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { JokeComponent } from './joke/joke.component';
+import { TodolistService } from './todolist/todolist.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,9 +22,10 @@ import { JokeComponent } from './joke/joke.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [TodolistService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
