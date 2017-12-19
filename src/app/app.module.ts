@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { JokeService } from './joke/joke.service';
 import { HttpClientModule } from '@angular/common/http';
+import { InputAutoWidthDirective } from './todolist/input-auto-width.directive';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     TodolistComponent,
     NavigationBarComponent,
     JokeComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    InputAutoWidthDirective
   ],
   imports: [
     BrowserModule,
