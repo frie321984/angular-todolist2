@@ -1,3 +1,4 @@
+import { Http } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,6 +12,8 @@ import { JokeComponent } from './joke/joke.component';
 import { TodolistService } from './todolist/todolist.service';
 import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { JokeService } from './joke/joke.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,9 +28,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [TodolistService],
+  providers: [TodolistService, JokeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
