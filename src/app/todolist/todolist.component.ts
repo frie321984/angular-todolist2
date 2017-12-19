@@ -9,7 +9,7 @@ import { TimerObservable } from 'rxjs/observable/TimerObservable';
   styleUrls: ['./todolist.component.css']
 })
 export class TodolistComponent implements OnInit {
-  jokeDisplayTimeMillis = 5000;
+  jokeDisplayTimeMillis = 10000;
   inputText = '';
   selectedIndex: number;
   isEditMode: boolean;

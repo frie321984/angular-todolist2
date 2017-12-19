@@ -8,12 +8,17 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class JokeService {
 
-  private url = 'https://api.chucknorris.io/jokes/random';
+  private url = 'https://icanhazdadjoke.com/';
 
   constructor(private httpClient: HttpClient) { }
 
   getJoke(): Observable<string> {
-    return this.httpClient.get(this.url).map((response) => response['value']);
+    return this.httpClient.get(this.url, {
+      headers: new HttpHeaders().append('Accept', 'application/json')
+    }).map((response) => {
+      console.log(response);
+      return response['joke'];
+    });
   }
 
 }
