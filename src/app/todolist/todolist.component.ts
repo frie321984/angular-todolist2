@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodolistService } from './todolist.service';
+import { Observable } from "rxjs/Observable";
+import { TimerObservable } from "rxjs/observable/TimerObservable";
 
 
 @Component({
@@ -8,6 +10,7 @@ import { TodolistService } from './todolist.service';
   styleUrls: ['./todolist.component.css']
 })
 export class TodolistComponent implements OnInit {
+  jokeDisplayTimeMillis = 5000;
   inputText = '';
   selectedIndex: number;
   isEditMode: boolean;
@@ -25,7 +28,6 @@ export class TodolistComponent implements OnInit {
     this.selectedIndex = null;
     this.isEditMode = false;
     this.inputText = '';
-    this.isShowJoke = false;
   }
 
   handleChange() {
@@ -42,12 +44,16 @@ export class TodolistComponent implements OnInit {
     this.selectedIndex = index;
     this.isEditMode = true;
     this.inputText = this.todoService.getTodo(index);
-    this.isShowJoke = false;
   }
 
   removeTodo(index: number) {
     this.todoService.remove(index);
     this.isShowJoke = true;
+    TimerObservable.create(this.jokeDisplayTimeMillis)
+      .subscribe(t => {
+        console.log('hiding joke again');
+        this.isShowJoke = false;
+      });
   }
 
 }
