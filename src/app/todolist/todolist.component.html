@@ -1,3 +1,8 @@
-<p>
-  todolist works!
-</p>
+<ul>
+  <li *ngFor="let item of todos; let i = index;">
+    <span (click)="selectTodo(i)">Lorem ipsum dolor.</span>
+    <button (click)="removeTodo(i)">X</button>
+  </li>
+</ul>
+
+<app-joke *ngIf="isShowJoke"></app-joke>
