@@ -1,6 +1,9 @@
 <div id="editform">
-  <input type="text" [(ngModel)]="inputText" appInputAutoWidth />
-  <button (click)="addTodo()">Add</button>
+  <p><input type="text" [(ngModel)]="inputText" (keyup.enter)="handleChange()" appInputAutoWidth #focusable /></p>
+  <button (click)="handleChange()">
+    <span *ngIf="!isEditMode">Add</span>
+    <span  *ngIf="isEditMode">Edit</span>
+  </button>
   <button (click)="clearInput()">Clear</button>
 </div>
 
